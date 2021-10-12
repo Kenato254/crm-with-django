@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block title %}{{lead.first_name }} | Update {% endblock title %}
+{% block body %}
+    <section class="text-gray-600 body-font overflow-hidden">
+        <div class="max-w-lg mx-auto mt-5">
+            <h2 class="text-sm title-font text-gray-500 tracking-widest">LEAD</h2>
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ lead.first_name }} {{ lead.last_name }}</h1>
+            <div class="flex mb-4">
+                <a href="{% url 'leads:lead-detail' lead.id %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                    Overview
+                </a>
+                <a href="{% url 'leads:lead-category-update' lead.id %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                    Category
+                </a>
+                <a href="{% url 'leads:lead-update' lead.id %}" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
+                    Update Details
+                </a>
+            </div>
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit"   class="w-full mb-3 text-white bg-green-900 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded">
+                    Update
+                </button>
+                <div class="py-5 border-t border-gray-200">
+                    <a href="{% url 'leads:lead-delete' lead.id %}" class="w-1/2 mt-3 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                        Delete
+                    </a>
+                </div>
+            </form>
+        </div>
+      </section>
+{% endblock body %}
+
+    <!-- <div class="w-1/2 border-b border-gray-300 mt-10 mb-5 max-w-lg mx-auto">
+        <a href="{% url 'leads:lead-list' %}">Go to leads</a>
+    </div> -->
