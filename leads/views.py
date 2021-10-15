@@ -1,4 +1,4 @@
-<from django.core.mail import send_mail
+from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import query
 from django.shortcuts import render, redirect, reverse
@@ -142,13 +142,13 @@ class CategoryListView(LoginRequiredMixin, generic.ListView):
             queryset = Lead.objects.filter(organisation=user.agent.organisation)
 
         context.update({
-            "ussassigned_lead_count":queryset.filter(category__isnull=True).count()
+            "ussassigned_lead_count":queryset.filter(category__isnull=True).count(),
+            "ussassigned_lead":queryset.filter(category__isnull=True)
         })
         return context
 
     def get_queryset(self):
         user = self.request.user
-
         # Initial queryset of leads for the entire organisation
         if user.is_organizer:
             queryset = Category.objects.filter(organisation=user.userprofile)

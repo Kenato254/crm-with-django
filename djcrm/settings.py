@@ -153,6 +153,8 @@ LOGIN_REDIRECT_URL = '/leads'
 
 LOGIN_URL = '/login' 
 
+LOGOUT_REDIRECT_URL = '/'
+
 # Crispy - forms - tailwind
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
