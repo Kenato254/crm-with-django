@@ -54,6 +54,9 @@ class LeadCreateView(OrganizerAndLoginRequiredMixin, generic.CreateView):
         return reverse("leads:lead-list")
     
     def form_valid(self, form):
+        lead = form.save(commit=False)
+        lead.organisation = self.request.user.userprofile
+        lead.save()
         send_mail(
             subject = "A lead has been created",
             message = "Go to the site to see the new lead",
@@ -118,13 +121,12 @@ class AssignAgentView(OrganizerAndLoginRequiredMixin, generic.FormView):
 
     def get_success_url(self):
         return reverse('leads:lead-list')
-    
+
     def form_valid(self, form):
         agent = form.cleaned_data["agent"]
         lead = Lead.objects.get(id=self.kwargs['pk'])
         lead.agent = agent
         lead.save()
-        print(lead)
         return super(AssignAgentView, self).form_valid(form)
 
 class CategoryListView(LoginRequiredMixin, generic.ListView):

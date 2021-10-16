@@ -39,6 +39,7 @@ class Lead(models.Model):
 class Agent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     organisation = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    profilePic = models.ImageField(upload_to='profileImages/%Y/%m/%d')
 
     def __str__(self):
         return self.user.email
