@@ -23,7 +23,7 @@
 * source venv/bin/activate -- Ubuntu
 ### Install Requirements ###
 * pip install -r requirements.txt 
-### This project is configure for deployement so you'll need to set READ_DOT_ENV_FILE to true to run server ###
+### This project is configured for deployement so you'll need to set READ_DOT_ENV_FILE to true to run server ###
 * export READ_DOT_ENV_FILE=True
 ### Runserver ###
 * python manage.py runserver
