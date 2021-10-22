@@ -8,6 +8,12 @@
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
                 These are the leads under this category
             </p>
+            <div class="py-5 border-t border-gray-200">
+              <a href="{% url 'leads:category-delete' category.id %}" class="w-1/2 mt-3 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                  Delete
+              </a>
+              <a href="{% url 'leads:category-update' category.id %}" class="hover:text-blue-500">Update</a>
+            </div>
           </div>
           <div class="lg:w-2/3 w-full mx-auto overflow-auto">
             <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -35,8 +41,8 @@
                 <!-- <path d="M5 12h14M12 5l7 7-7 7"></path> -->
               </svg>
             </a>
-            <!-- <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button> -->
           </div>
         </div>
       </section>
+
 {% endblock body %}
