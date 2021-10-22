@@ -1,12 +1,12 @@
 ## CRM Built with Django
 ### Intro ##
-#### This is a basic Customer Relationship Management system for managing leads. Built  ####
+#### This is a basic Customer Relationship Management system for managing leads.  ####
 
 ### Features ###
 * Create and manage Leads using the four basic operations of persistent storage(CRUD).
 * Create and manage Agents. CRUD applies here as well. 
 * Assign Leads to Agents.
-* Authentication operations - Signup, Login, Reset password and email backend configured to display emails in console. Can to be configured to any smtp.
+* Authentication operations - Signup, Login, Reset Password and email backend configured to display emails in the console. Configure to smtp of your choice.
 
 ### Technology used. ###
 * Python
