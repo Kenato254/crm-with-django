@@ -1,31 +1,32 @@
-## CRM Built with Django
-### Intro ##
-#### This is a basic Customer Relationship Management system for managing leads.  ####
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome To CRM{% endblock title %}
 
-### Features ###
-* Create and manage Leads using the four basic operations of persistent storage(CRUD).
-* Create and manage Agents. CRUD applies here as well. 
-* Assign Leads to Agents.
-* Authentication operations - Signup, Login, Reset Password and email backend configured to display emails in the console. Configure to smtp of your choice.
-
-### Technology used. ###
-* Python
-* Django 
-* HTML 
-* CSS 
-* Tailwind CDN
-
-### Install Python ###
-* Python 3.xx
-### Install Virtualenv ###
-* python3 -m venv /path/to/new/virtual/environment
-### Activate Virtualenv ###
-* source venv/bin/activate -- Ubuntu
-### Install Requirements ###
-* pip install -r requirements.txt 
-### This project is configured for deployement so you'll need to set READ_DOT_ENV_FILE to true to run server ###
-* export READ_DOT_ENV_FILE=True
-### Runserver ###
-* python manage.py runserver
-### Contributor
-* Kennedy Gitonga
+{% block body %}
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-18 items-center justify-center flex-col">
+      <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="{% static 'images/crm-icon-6.jpg' %}">
+      <div class="text-center lg:w-2/3 w-full">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+            CRM built with Django
+        </h1>
+        <p class="mb-8 leading-relaxed">
+            This CRM helps you manage your leads.
+        </p>
+        {% if not user.is_authenticated %}
+        <div class="flex justify-center">
+          <a href="{% url 'login' %}" class="inline-flex text-white bg-green-900 border-0 py-1 px-7 focus:outline-none hover:bg-green-700 rounded text-base">
+            Login to get started
+          </a>
+        </div>
+        {% else %}
+        <div class="flex justify-center">
+          <a href="{% url 'leads:lead-list' %}" class="inline-flex text-white bg-green-900 border-0 py-1 px-7 focus:outline-none hover:bg-green-700 rounded text-base">
+            Go to Leads
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock body %}
