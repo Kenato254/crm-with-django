@@ -24,7 +24,6 @@
 ### Install Requirements ###
 * pip install -r requirements.txt 
 ### This project is configured for deployement so it's best to start a new project, merge and set READ_DOT_ENV_FILE to true to run server ###
-*
 * export READ_DOT_ENV_FILE=True
 ### Runserver ###
 * python manage.py runserver
